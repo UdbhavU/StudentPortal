@@ -1,0 +1,9 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+<h2>Posts</h2>
+{% for post in posts %}
+<h3>{{post.title}}</h3>
+<p style='font-size:10px'>Posted by {{post.author}} on {{post.date_created}}</p>
+<p>{{post.content}}</p>
+{% endfor %}
+{% endblock content %}

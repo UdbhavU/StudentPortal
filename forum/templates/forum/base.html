@@ -9,7 +9,11 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<title>Document</title>
+{% if title %}
+    <title>{{title}}</title>
+{% else %}
+    <title>Student Portal</title>
+{% endif %}
 </head>
 <body>
     
@@ -55,15 +59,9 @@
         </div>
     </nav>
     <main>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Jumbotron heading</h1>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <hr class="my-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-            </div>
-        </div>
+    <div class="container-fluid">
+        {% block content %}{% endblock %}    
+    </div>
     </main>
 <!-- Optional JavaScript but it is better to add it-->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
