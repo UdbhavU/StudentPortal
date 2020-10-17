@@ -1,12 +1,12 @@
 {% extends 'forum/base.html' %}
 {% block content %}
-div.<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Student Portal/h1>
+        <h1 class="display-4">Student Portal</h1>
         <p class="lead">Forum for students to interact with their peer</p>
         <hr class="my-4">
         <p>Make sure to be civil in your interactions</p>
-        <a class="btn btn-primary btn-lg" href="{% url 'forum/'%}" role="button">Go to Forum</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'Forum-Home'%}" role="button">Go to Forum</a>
     </div>
 </div>
 {% endblock content %}

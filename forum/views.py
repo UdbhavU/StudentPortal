@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 #following are list just dummy contents
-#when accessing from databse make sure that the content is a list 
-##todo Access the database content and replace posts with the content from the database 
+#when accessing from databse make sure that the content is a list
+##todo Access the database content and replace posts with the content from the database
 posts = [{
      'author':'Percy',
      'title':'welcome',
@@ -29,5 +29,3 @@ def forum(request):
     }
 
     return render(request,'forum/forum.html',context)
-
-
