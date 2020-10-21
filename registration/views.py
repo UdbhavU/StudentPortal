@@ -24,15 +24,15 @@ def signup(request):
                 print('*')
                 return redirect('/')
             else:
-                error.append('invalid email')
+                
                 print('*')
-                return render(request, 'registration/signupform.html',{'error':error})
+                return render(request, 'registration/signupform.html', {'title': 'SignUp', 'error': error})
         else:
             error.append('Different Passwords entered')
             print('*')
-            return render(request, 'registration/signupform.html', {'error': error})
+            return render(request, 'registration/signupform.html', {'title': 'SignUp', 'error': error})
 
     else:
               
-        return render(request,'registration/signupform.html',{'error':error})
+        return render(request,'registration/signupform.html',{'title':'SignUp','error':error})
 
