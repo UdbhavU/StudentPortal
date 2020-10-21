@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
-##TODO: fix the email bug.
+#[fixed]#TODO: fix the email bug.
+#Django gets element by name
 # Create your views here.
 def signup(request):
     error=[]
