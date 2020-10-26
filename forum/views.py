@@ -29,3 +29,4 @@ def forum(request):
     }
 
     return render(request,'forum/forum.html',context)
+  
