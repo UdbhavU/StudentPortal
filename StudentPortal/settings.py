@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'userlogin.apps.UserloginConfig',
     'forum.apps.ForumConfig',
     'registration.apps.RegistrationConfig',
     'django.contrib.admin',
@@ -86,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'StudentPortal',
-        'USER': 'dev_user',
+        'USER': 'root',
         'PASSWORD': 'Password1@3',
         'HOST': 'localhost',
         'PORT': '3306',
