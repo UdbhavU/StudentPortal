@@ -52,10 +52,19 @@
                   </div>
               </li>
             </ul>
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {% if user.is_authenticated %}
+           
+            
+            <li class="navbar-item active text-danger"><a href="{% url 'Home'%}" class="nav-link">hello,{{user}}</a></li>
+            <li class="navbar-item active text-danger"><a href="{% url 'userlogout'%}" class="nav-link">Logout</a></li>
+                
+            {% else%}
                 <li class="navbar-item active text-danger"><a href="{% url 'userlogin'%}" class="nav-link">login</a></li>
                 <li class="navbar-item active text-danger"><a href="{% url 'signup'%}" class="nav-link">Sign Up</a></li>
+                
               </ul>
+              {% endif %}
         </div>
     </nav>
     <main>

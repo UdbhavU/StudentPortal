@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'StudentPortal',
-        'USER': 'root',
+        'USER': 'dev_user',
         'PASSWORD': 'Password1@3',
         'HOST': 'localhost',
         'PORT': '3306',
