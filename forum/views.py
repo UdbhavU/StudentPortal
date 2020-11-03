@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .decorator import user_authenticated 
 
 #following are list just dummy contents
 #when accessing from databse make sure that the content is a list
@@ -22,6 +23,7 @@ def home(request):
     return render(request,'forum/home.html')
 
 #forum app view
+@user_authenticated
 def forum(request):
     context = {
         'posts':posts

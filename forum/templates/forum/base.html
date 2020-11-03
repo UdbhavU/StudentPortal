@@ -16,7 +16,7 @@
 {% endif %}
 </head>
 <body>
-    
+
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
         <a class="navbar-brand" href="{% url 'Home' %}">Student Portal</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -52,15 +52,24 @@
                   </div>
               </li>
             </ul>
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="navbar-item active text-danger"><a href="#" class="nav-link">login</a></li>
+             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {% if user.is_authenticated %}
+           
+            
+            <li class="navbar-item active text-danger"><a href="{% url 'Home'%}" class="nav-link">hello,{{user}}</a></li>
+            <li class="navbar-item active text-danger"><a href="{% url 'userlogout'%}" class="nav-link">Logout</a></li>
+                
+            {% else%}
+                <li class="navbar-item active text-danger"><a href="{% url 'userlogin'%}" class="nav-link">login</a></li>
                 <li class="navbar-item active text-danger"><a href="{% url 'signup'%}" class="nav-link">Sign Up</a></li>
+                
               </ul>
+              {% endif %}
         </div>
     </nav>
     <main>
     <div class="container-fluid col-sm-8 justify-center">
-        {% block content %}{% endblock %}    
+        {% block content %}{% endblock %}
     </div>
     </main>
 <!-- Optional JavaScript but it is better to add it-->
