@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
+@login_authenticated
 def userlogin(request):
     if request.method == 'POST':
         

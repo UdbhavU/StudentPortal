@@ -4,7 +4,8 @@ from .decorator import user_authenticated
 
 #following are list just dummy contents
 #when accessing from databse make sure that the content is a list
-##todo Access the database content and replace posts with the content from the database
+##todo: Access the database content and replace posts with the content from the database
+##todo: Proper redirecting measures and a separate view for each post 
 posts = [{
      'author':'Percy',
      'title':'welcome',
@@ -27,8 +28,6 @@ def home(request):
 def forum(request):
     context = {
         'posts':posts
-
-    }
-
-    return render(request,'forum/forum.html',context)
+        }
+    return render(request,'forum/forum.html', context)
   
