@@ -1,6 +1,9 @@
+from userlogin.decorator import login_authenticated
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
+from . import decorator
+
 
 # Create your views here.
 @login_authenticated
@@ -14,7 +17,7 @@ def userlogin(request):
         print(user)
         if user is not None:
             login(request,user)
-            request.session['logged']="True"
+            # request.session['logged']="True"
             ##debugging purpose->
             print(request.user,'0000')
             return redirect('Forum-Home')
