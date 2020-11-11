@@ -1,6 +1,32 @@
 {% extends 'forum/base.html' %}
 {% block content %}
 <h2 class='display-4'>Posts</h2>
+
+<div class="card">
+    <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
+    {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+    <div class="card-header">
+    <h5 class="card-title">Create a post</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Posting as {{user}}</h6>
+    </div>
+    <div class="card-body">
+      
+        <form method="POST" action="{% url 'Create-Post'%}">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="post_title">Title</label>
+            <input type="text" class="form-control" name="post_title" id="post_title" aria-describedby="helpId" placeholder="">
+            <small id="helpId" class="form-text text-muted">Max Character  is 200</small>
+          </div>
+           <div class="form-group">
+               <label for="post">Post</label>
+               <textarea class="form-control" id="post" name="post" rows="4" placeholder="Type your post here"></textarea>
+           </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% comment %} <a href="#" class="btn btn-primary">Card button</a> {% endcomment %}
+    </div>
+</div>
 {% for post in posts %}
 <div class = 'container border rounded mt-4 shadow'>
 <h3>{{post.title}}</h3>

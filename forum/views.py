@@ -1,6 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from .decorator import user_authenticated 
+##--------------models---------------##
+from .models import Posts
+from django.contrib.auth.models import User
+##-----------------------------------##
+
 
 #following are list just dummy contents
 #when accessing from databse make sure that the content is a list
@@ -30,4 +35,19 @@ def forum(request):
         'posts':posts
         }
     return render(request,'forum/forum.html', context)
-  
+##---------------create_post-----------------##
+
+def createPost(request):
+    if request.method =="POST":
+        
+        user = User.objects.get(username= request.user)
+        title = request.POST.get("post_title")
+        post_content = request.POST.get("post")
+        post = Posts.objects.create(author=user,post_title = title, post_content = post_content )
+        post.save()
+    return redirect('Forum-Home')
+
+
+    
+
+    
