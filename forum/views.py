@@ -11,19 +11,7 @@ from django.contrib.auth.models import User
 #when accessing from databse make sure that the content is a list
 ##todo: Access the database content and replace posts with the content from the database
 ##todo: Proper redirecting measures and a separate view for each post 
-posts = [{
-     'author':'Percy',
-     'title':'welcome',
-     'content':'first post',
-     'date_posted':'October 15, 2020'
-    },
-    {
-     'author':'Andromeda',
-     'title':'welcome again',
-     'content':'Second post',
-     'date_posted':'October 16, 2020'
-    },
-    ]
+
 #Index/Home page page view
 def home(request):
     return render(request,'forum/home.html')
@@ -31,9 +19,11 @@ def home(request):
 #forum app view
 @user_authenticated
 def forum(request):
+    posts = Posts.objects.all()
     context = {
         'posts':posts
         }
+    print(context)
     return render(request,'forum/forum.html', context)
 ##---------------create_post-----------------##
 
@@ -45,7 +35,11 @@ def createPost(request):
         post_content = request.POST.get("post")
         post = Posts.objects.create(author=user,post_title = title, post_content = post_content )
         post.save()
+        forum(request)
     return redirect('Forum-Home')
+
+def editPost(request):
+    return render(request, 'forum/post.html')
 
 
     

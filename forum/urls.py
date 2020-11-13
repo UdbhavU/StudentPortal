@@ -5,5 +5,6 @@ from . import views
 urlpatterns =[
     path('',views.home, name = 'Home'),
     path('forum/',views.forum, name = 'Forum-Home'),
-    path('create_post/', views.createPost, name = 'Create-Post')
+    path('create_post/', views.createPost, name = 'Create-Post'),
+    path('edit_post/', views.editPost, name = 'Edit-Post')
 ]
