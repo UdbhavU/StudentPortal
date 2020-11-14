@@ -26,16 +26,23 @@
 {% for post in posts %}
     <div class="card">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
-        <div class="card-header">
-            {{post.post_title}}
+        <div class="card-header bg-light">
+        <div class="container-fluid">
+        <div class="col-1">
+             {{post.post_title}}
+             </div>
+            <div class="col-6">
             {% if user == post.author%}
-                <a href={% url 'Edit-Post'%}><span style="position:left;"><button type="button" class="btn btn-outline-primary">Edit</button></span></a>
+                <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="position:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
             {% endif %}
+            </div>
+        </div>
+           
         </div>
         <div class="card-body">        
             <h6 class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></h6>
-            <p class="card-text">{{post.post_content}}</p>
-            <a href="#" class="card-link">Read more</a>        
+            <p class="card-text">{{post.post_content | safe}}</p>
+            <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
         </div>
      </div>
 {% endfor %}

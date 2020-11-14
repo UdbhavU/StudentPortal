@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'databaseModels.apps.DatabasemodelsConfig',
+    'profiles.apps.ProfilesConfig',
     'userlogin.apps.UserloginConfig',
     'forum.apps.ForumConfig',
     'registration.apps.RegistrationConfig',

@@ -1,0 +1,19 @@
+{% extends 'forum/base.html' %}
+{% block content %}
+ <h3>Edit Post</h3>
+ <form method ='POST'>
+     {% csrf_token %}
+     <div class="form-group">
+       <label for="title">Title</label>
+       <input type="text" class="form-control" name="title" id="title" value="{{post.post_title}}"/>
+       
+     </div>
+     <div class="form-group">
+       <label for="content">Post</label>
+       <textarea class="form-control" name="content" id="content" rows="4">{{post.post_content}}</textarea>
+     </div>
+
+      <a name="delete" id="delete" class="btn btn-danger" href="{% url 'Delete-Post' id=post.pk %}" role="button">Delete</a>
+     <button type="submit" class="btn btn-primary">Submit</button>
+ </form>
+{% endblock content %}

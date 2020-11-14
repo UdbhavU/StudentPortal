@@ -13,6 +13,6 @@ class Profiles(models.Model):
         db_table = 'Profiles'
     def __str__(self)->str:
         return self.user
-
+    
 
 

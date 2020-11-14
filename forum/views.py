@@ -5,11 +5,11 @@ from .decorator import user_authenticated
 from .models import Posts
 from django.contrib.auth.models import User
 ##-----------------------------------##
-
+context={}
 
 #following are list just dummy contents
 #when accessing from databse make sure that the content is a list
-##todo: Access the database content and replace posts with the content from the database
+##done: Access the database content and replace posts with the content from the database
 ##todo: Proper redirecting measures and a separate view for each post 
 
 #Index/Home page page view
@@ -37,9 +37,38 @@ def createPost(request):
         post.save()
         forum(request)
     return redirect('Forum-Home')
+##-----------------detailed view--------------------##
+def viewPost(request,id):
+    return render(request, 'forum/viewpost.html')
+    
+##-----------------edit post------------------------##
+def editPost(request, id):
+    edited = False
+    post = Posts.objects.get(id=id)
+    context = {
+        'post':post}
+    if request.method =="POST":
+        if request.user == post.author:
+            if not request.POST.get("title") == post.post_title:
+                post.post_title = request.POST.get("title")
+                edited = True
+                print('1')
 
-def editPost(request):
-    return render(request, 'forum/post.html')
+            if not request.POST.get("content") == post.post_content:
+                post.post_content = request.POST.get("content")
+                edited=True
+                print('2')
+            if edited:
+                post.save()
+            return redirect('Forum-Home')
+
+
+    return render(request, 'forum/editpost.html',context)
+
+def deletePost(request, id):
+    post = Posts.objects.get(pk=id)
+    post.delete()
+    return redirect('Forum-Home')
 
 
     
