@@ -25,6 +25,6 @@ class Comment(models.Model):
     updated = models.DateTimeField(auto_now=True)
     class Meta:
         ordering = ('-publish',)
-    def __str__(self):
-        return self.comment
+    # def __str__(self):
+    #     return self.comment
 # Create your models here.

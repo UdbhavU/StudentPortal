@@ -40,8 +40,14 @@
         <div class="card-body">        
             <h6 class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></h6>
             <p class="card-text">{{post.post_content | safe}}</p>
-            <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
+            </div>
+        <div class="card-footer">
+        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
+        
+                <i style="float:right;" class="fa fa-comments"></i>
+
         </div>
+        
      </div>
 {% endfor %}
 {% endblock content %}

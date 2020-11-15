@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .decorator import user_authenticated 
 ##--------------models---------------##
 from .models import Posts
+from .models import Comment
 from django.contrib.auth.models import User
 ##-----------------------------------##
 context={}
@@ -39,7 +40,14 @@ def createPost(request):
     return redirect('Forum-Home')
 ##-----------------detailed view--------------------##
 def viewPost(request,id):
-    return render(request, 'forum/viewpost.html')
+    post = Posts.objects.get(pk=id)
+    context = {
+        'post':post,
+        'comment':Comment.objects.filter(post=post)
+    }
+    if request.method == "POST":
+        createComment(request,post_id=id,post_comment=request.POST.get("comment"))
+    return render(request, 'forum/viewpost.html',context)
     
 ##-----------------edit post------------------------##
 def editPost(request, id):
@@ -69,6 +77,18 @@ def deletePost(request, id):
     post = Posts.objects.get(pk=id)
     post.delete()
     return redirect('Forum-Home')
+
+def createComment(request ,post_id,post_comment):
+    post = Posts.objects.get(pk=post_id)
+    user = User.objects.get(username=request.user)
+    comment = Comment()
+    
+    comment.post = post
+    comment.comment_author = user
+    comment.comment = post_comment
+    comment.save()
+    
+    return redirect('View-Post',id=post_id)
 
 
     
