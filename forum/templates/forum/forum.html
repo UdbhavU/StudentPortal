@@ -27,17 +27,15 @@
     <div class="card">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
         <div class="card-header bg-light">
-        <div class="container-fluid">
-        <div class="col-1">
-             {{post.post_title}}
-             </div>
-            <div class="col-6">
+            <span>
+            {{post.post_title}}
+            </span>
+            <span class="edit_btn">
+            {% comment %} <span style="float:right;"> {% endcomment %}
             {% if user == post.author%}
                 <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="position:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
             {% endif %}
-            </div>
-        </div>
-           
+            <span>
         </div>
         <div class="card-body">        
             <h6 class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></h6>
