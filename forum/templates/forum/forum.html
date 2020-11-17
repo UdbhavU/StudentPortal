@@ -24,13 +24,13 @@
     </div>
 </div>
 {% for post in posts %}
-    <div class="card">
+    <div class="card m-3">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
         <div class="card-header bg-light">
             <span>
             {{post.post_title}}
             </span>
-            <span class="edit_btn">
+            <span style="float:right;">
             {% comment %} <span style="float:right;"> {% endcomment %}
             {% if user == post.author%}
                 <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="position:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
@@ -43,12 +43,18 @@
             </div>
         <div class="card-footer">
         <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
-        
-                <i style="float:right;" class="fa fa-comments"></i>
+                <i onclick="clickLoved(this)" class="fa fa-heart-o"></i>
+                <a href='#'><i style="float:right;" class="fa fa-comments"></i></a>
 
         </div>
         
      </div>
+     
+     <script>
+   function clickLoved(x) {
+  x.classList.toggle("fa-heartbeat");
+}
+     </script>
 {% endfor %}
 {% endblock content %}
 
