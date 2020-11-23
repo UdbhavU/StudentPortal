@@ -1,6 +1,10 @@
 {% extends 'forum/base.html' %}
 {% block content %}
-<div class="container-fluid">
+<style type="text/css">
+    .border-right-0 {
+    }
+</style>
+    <div class="container-fluid">
 <div class="container">
     <h3 class="display-4">{{post.post_title}}</h3>
     <hr />
@@ -9,6 +13,7 @@
     <p>{{post.post_content | safe }}</p>
 </div>
 <hr />
+<div>
 <form method="POST">
 {% csrf_token %}
    <div class="form-group">
@@ -17,15 +22,16 @@
    </div>
    <span><small>   Commenting as {{user}}</small></span><span style="float:right;"><button  type="submit" class="btn btn-primary">Submit</button>
 
-    </form>
+</form>
 </div><br />
 {% for element in comment %}
-<div class="card m-2">
+<div class="card m-2 border-primary border-bottom-0 border-right-0 ">
     <div class="card-body">
     <h4 class="card-title">{{element.comment}}
     </h4>
-    <p class="card-text">Text</p>
+        <p class="card-text"><small>Commented by <em class="span_user">{{ element.comment_author }}</em></small></p>
   </div>
+</div>
 </div>
 {% endfor %}
 {% endblock content %}

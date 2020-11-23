@@ -15,6 +15,7 @@ context={}
 
 #Index/Home page page view
 def home(request):
+
     return render(request,'forum/home.html')
 
 #forum app view

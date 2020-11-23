@@ -16,6 +16,8 @@ def userlogin(request):
         user = authenticate(request,username=username,password=password)
         print(user)
         if user is not None:
+            if user.is_superuser :
+                request.admin = 1
             login(request,user)
             # request.session['logged']="True"
             ##debugging purpose->
@@ -34,6 +36,7 @@ def userlogin(request):
 def userlogout(request):
     
     if request.user.is_authenticated:
+        request.admin = 0
         logout(request)        
         
     return redirect('Home')
