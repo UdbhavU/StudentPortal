@@ -23,7 +23,8 @@
         
     </div>
 </div>
-{% for post in posts %}
+
+    {% for post in posts %}
     <div class="card m-3">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
         <div class="card-header bg-light">
@@ -33,7 +34,7 @@
             <span style="float:right;">
             {% comment %} <span style="float:right;"> {% endcomment %}
             {% if user == post.author%}
-                <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="position:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
+                <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="float:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
             {% endif %}
             <span>
         </div>

@@ -17,3 +17,16 @@ def announcement(request):
         context["error"] = "You are not an Admin"
 
     return render(request,'announcements/createAnnouncement.html',context)
+
+def editAnnouncement(request, id):
+    if request.method == "POST" :
+        announcement = Announcement.objects.get(pk=id)
+        announcement.title = request.POST.get("a_title")
+        announcement.content =request.POST.get("a_content")
+        announcement.tags = request.POST.get("a_tags")
+        announcement.save()
+        return redirect('Home')
+    else:
+        ancmt = Announcement.objects.get(pk=id)
+        context["ancmt"]= ancmt
+        return render(request,'announcements/editAnnouncement.html',context)

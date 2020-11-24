@@ -1,6 +1,9 @@
 {% extends 'forum/base.html' %}
 {% block content %}
-    <div class="container center">
+    <hr />
+    <hr style="height:3px;border-width:0;color:red;background-color:red">
+
+    <div class="container align-center">
     <form method="POST">
     {% csrf_token %}
         <div class="form-group">
@@ -9,10 +12,23 @@
                 <strong>{{ error }}</strong>
             </div>
             {% endif %}
-            <label for="a_content">Announcement</label>
+
+            <div class="form-group">
+                <label for="a_title">Announcement Title</label>
+                <input type="text"
+                       class="form-control" name="a_title" id="a_title" aria-describedby="helpId" placeholder="Title">
+                <small id="helpId" class="form-text text-muted">Max char 200</small>
+            </div>
+            <div class="form-group">
+                <label for="a_tag">Tags</label>
+                <input type="text"
+                       class="form-control" name="a_tag" id="a_tag" aria-describedby="helpId" placeholder="Exam, Event, Workshop, webinar, etc">
+                <small id="helpId" class="form-text text-muted">Separate each tag by comma</small>
+            </div>
+        <label for="a_content">Announcement</label>
             <textarea class="form-control" name="a_content" id="a_content" rows="4"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-danger">Submit</button>
     </form>
     </div>
 
