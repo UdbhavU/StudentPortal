@@ -1,13 +1,61 @@
 {% extends 'forum/base.html' %}
 {% block content %}
 <h2 class='display-4'>Posts</h2>
-{% for post in posts %}
-<div class = 'container border rounded mt-4 shadow'>
-<h3>{{post.title}}</h3>
-<p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.date_posted}}</p>
-<p>{{post.content}}</p>
+<div class="card">  
+    <div class="card-header">
+        <h5 class="card-title">Create a post</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Posting as {{user}}</h6>
+    </div>
+    <div class="card-body">      
+        <form method="POST" action="{% url 'Create-Post'%}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="post_title">Title</label>
+                <input type="text" class="form-control" name="post_title" id="post_title" aria-describedby="helpId" placeholder="title">
+                <small id="helpId" class="form-text text-muted">Max Character  is 200</small>
+            </div>
+            <div class="form-group">
+                <label for="post">Post</label>
+                <textarea class="form-control" id="post" name="post" rows="4" placeholder="Type your post here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
 </div>
+{% for post in posts %}
+    <div class="card m-3">
+    <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
+        <div class="card-header bg-light">
+            <span>
+            {{post.post_title}}
+            </span>
+            <span style="float:right;">
+            {% comment %} <span style="float:right;"> {% endcomment %}
+            {% if user == post.author%}
+                <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="position:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
+            {% endif %}
+            <span>
+        </div>
+        <div class="card-body">        
+            <h6 class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></h6>
+            <p class="card-text">{{post.post_content | safe}}</p>
+            </div>
+        <div class="card-footer">
+        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
+                <i onclick="clickLoved(this)" class="fa fa-heart-o"></i>
+                <a href='#'><i style="float:right;" class="fa fa-comments"></i></a>
 
+        </div>
+        
+     </div>
+     
+     <script>
+
+   function clickLoved(x) {
+  x.classList.toggle("fa-heartbeat");
+}
+     </script>
 {% endfor %}
 {% endblock content %}
 

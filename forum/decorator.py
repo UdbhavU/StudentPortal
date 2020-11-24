@@ -8,4 +8,4 @@ def user_authenticated(view_funct):
         else:
             return redirect('userlogin')
     return wrapper
-        
+     

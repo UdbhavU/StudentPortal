@@ -1,12 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Required meta tags to make it mobile responsive-->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="{% static '/css/card.css' %}">
 
 <!-- Bootstrap CSS CDN-->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 {% if title %}
@@ -17,7 +21,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-{% if user.is_superuser %}{{ "danger" }}{% else %}{{ "primary" }}{% endif %}">
         <a class="navbar-brand" href="{% url 'Home' %}">Student Portal</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
@@ -30,7 +34,7 @@
                     <a class="nav-link" href="{% url 'Forum-Home' %}">Forum</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Announcements</a>
+                  <a class="nav-link" href="{% url 'ANC' %}">Announcements</a>
               </li>
                 <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
@@ -69,7 +73,11 @@
     </nav>
     <main>
     <div class="container-fluid col-sm-8 justify-center">
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+         {% endblock %}
+
+
     </div>
     </main>
 <!-- Optional JavaScript but it is better to add it-->
