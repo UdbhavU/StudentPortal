@@ -1,1 +1,4 @@
 mysqlclient*
+/data/
+/.vscode/
+/Html_snippets/
