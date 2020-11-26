@@ -13,8 +13,7 @@ from django.contrib.auth.models import User
 context = {}
 
 subjects = Subject.objects.all()
-ancmts = Announcement.objects.all()
-context["ancmts"] = ancmts
+
 context["subjects"] = subjects
 # following are list just dummy contents
 # when accessing from databse make sure that the content is a list
@@ -23,7 +22,8 @@ context["subjects"] = subjects
 
 # Index/Home page page view
 def home(request):
-
+    ancmts = Announcement.objects.all()
+    context["ancmts"] = ancmts
     return render(request, 'forum/home.html',context)
 
 
