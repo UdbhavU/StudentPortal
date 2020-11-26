@@ -1,10 +1,18 @@
 {% extends 'forum/base.html' %}
 {% block content %}
 {#    add content here #}
+    <div class="container-fluid align-center">
     {%  for item in resource %}
-{{ item.content }}
+        <hr />
+        <div class="card">
 
+            <div class="card-body">
+                <h4 class="card-title"><a href="{{ item.url }}">{{ item.resourceTitle }}</a></h4>
+                <p class="card-text">{{ item.content }}</p>
+            </div>
+        </div>
     {% endfor %}
+    </div>
  {% if resource.has_other_pages %}
   <ul class="pagination">
     {% if resource.has_previous %}

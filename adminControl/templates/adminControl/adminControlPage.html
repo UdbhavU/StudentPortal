@@ -4,7 +4,7 @@
     <hr style="height:3px;border-width:0;color:red;background-color:red">
 
     <div class="container align-center">
-    <form method="POST">
+    <form action="{% url 'ANC' %}" method="POST">
     {% csrf_token %}
         <div class="form-group">
             {% if error %}
@@ -37,14 +37,33 @@
     <hr style="height:3px;border-width:0;color:red;background-color:red">
     <div class="container align-center">
     <h2>Add a Resource</h2>
-    <form method="POST">
+    <form action="{% url 'C-RESOURCE' %}" method="POST">
     {% csrf_token %}
         <div class="form-group">
-            <label for="r_title">Resource </label>
+            <label for="r_title">Resource Title </label>
             <input type="text"
                    class="form-control" name="r_title" id="r_title" aria-describedby="helpId" placeholder="Resource Title">
             <small id="helpId" class="form-text text-muted">Max Char 200</small>
         </div>
+        <div class="form-group">
+            <label for="r_sub">Subject</label>
+            <select class="form-control" name="r_sub" id="r_sub">
+                {% for item in subjects %}
+                <option>{{ item.subjectCode }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="r_url">URL</label>
+            <input type="text" class="form-control" name="r_url" id="r_url" aria-describedby="helpId" placeholder="url">
+            <small id="helpId" class="form-text text-muted">Enter valid  web address</small>
+        </div>
+        <div class="form-group">
+            <label for="r_content">Description</label>
+            <textarea class="form-control" name="r_content" id="r_content" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
     </form>
 </div>
 

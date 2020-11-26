@@ -2,8 +2,10 @@ from typing import Dict, Any
 
 from django.shortcuts import render, redirect
 from .models import Announcement
+from resources.models import Subject , Resource
 from django.contrib.auth.models import User
 context: Dict[Any, Any] = {}
+context["subjects"] = Subject.objects.all()
 # Create your views here.
 def announcement(request):
     if request.user.is_superuser:
@@ -11,7 +13,8 @@ def announcement(request):
             a_author = User.objects.get(pk=request.user.id)
             a_content = request.POST.get("a_content")
             a_tags = request.POST.get("a_tag")
-            a_obj = Announcement.objects.create(author=a_author,content=a_content,tag=a_tags)
+            a_title = request.POST.get("a_title")
+            a_obj = Announcement.objects.create(title=a_title,author=a_author,content=a_content,tag=a_tags)
             a_obj.save()
             return redirect('Home')
     else:
@@ -31,3 +34,13 @@ def editAnnouncement(request, id):
         ancmt = Announcement.objects.get(pk=id)
         context["ancmt"]= ancmt
         return render(request, 'adminControl/editAnnouncement.html', context)
+
+def createResource(request):
+    if request.method =="POST":
+        subject = Subject.objects.get(subjectCode=request.POST.get("r_sub"))
+        r_title = request.POST.get("r_title")
+        r_url = request.POST.get("r_url")
+        r_content = request.POST.get("r_content")
+        resource = Resource.objects.create(resourceTitle=r_title,url=r_url,content=r_content,subject=subject)
+        resource.save()
+    return redirect('Home')
