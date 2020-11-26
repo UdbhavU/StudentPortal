@@ -13,7 +13,8 @@ def announcement(request):
             a_author = User.objects.get(pk=request.user.id)
             a_content = request.POST.get("a_content")
             a_tags = request.POST.get("a_tag")
-            a_obj = Announcement.objects.create(author=a_author,content=a_content,tag=a_tags)
+            a_title = request.POST.get("a_title")
+            a_obj = Announcement.objects.create(title=a_title,author=a_author,content=a_content,tag=a_tags)
             a_obj.save()
             return redirect('Home')
     else:

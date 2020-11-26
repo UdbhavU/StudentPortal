@@ -24,6 +24,9 @@ context["subjects"] = subjects
 def home(request):
     ancmts = Announcement.objects.all()
     context["ancmts"] = ancmts
+    for i in context["ancmts"]:
+        i.tag=[x for x in i.tag.strip(" ").split(",") ]
+        print(i.tag)
     return render(request, 'forum/home.html',context)
 
 

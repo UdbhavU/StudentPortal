@@ -4,7 +4,7 @@
     <hr style="height:3px;border-width:0;color:red;background-color:red">
 
     <div class="container align-center">
-    <form action="{% url "ANC" %}method="POST">
+    <form action="{% url 'ANC' %}" method="POST">
     {% csrf_token %}
         <div class="form-group">
             {% if error %}

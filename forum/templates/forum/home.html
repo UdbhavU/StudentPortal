@@ -15,7 +15,7 @@
 
         {% for announcement in ancmts %}
             <div class="list-group">
-        <div class="list-group-item list-group-item-action list-group-item-warning active"><span>{{ announcement.title }}<span>
+        <div class="list-group-item list-group-item-action list-group-item-warning active"><span>{{ announcement.title }} <span>
             {% for tag in announcement.tag %}
                 {{ tag }}
 
