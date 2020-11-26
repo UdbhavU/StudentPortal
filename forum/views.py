@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator
-from announcements.models import Announcement
+from adminControl.models import Announcement
 from .decorator import user_authenticated
 ##--------------models---------------##
 from .models import Posts
 from .models import Comment
+from resources.models import Subject
 from django.contrib.auth.models import User
 
 ##-----------------------------------##
 context = {}
 
-
+subjects = Subject.objects.all()
+ancmts = Announcement.objects.all()
+context["ancmts"] = ancmts
+context["subjects"] = subjects
 # following are list just dummy contents
 # when accessing from databse make sure that the content is a list
 ##done: Access the database content and replace posts with the content from the database
@@ -20,9 +24,6 @@ context = {}
 # Index/Home page page view
 def home(request):
 
-    ancmts = Announcement.objects.all()
-    context["ancmts"] = ancmts
-
     return render(request, 'forum/home.html',context)
 
 
@@ -30,9 +31,8 @@ def home(request):
 @user_authenticated
 def forum(request):
     posts = Posts.objects.all()
-    context = {
-        'posts': posts
-    }
+    context['posts']= posts
+
     print(context)
     return render(request, 'forum/forum.html', context)
 

@@ -26,14 +26,15 @@ SECRET_KEY = 's2i6#&ho4xtx2h(=62v)*orkz-avayn)$qzlo)@qc4dq9_9kd9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ "0.0.0.1","192.168.1.3","127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'resources.apps.ResourcesConfig',
     'profiles.apps.ProfilesConfig',
-    'announcements.apps.AnnouncementsConfig',
+    'adminControl.apps.AdminControlConfig',
     'userlogin.apps.UserloginConfig',
     'forum.apps.ForumConfig',
     'registration.apps.RegistrationConfig',

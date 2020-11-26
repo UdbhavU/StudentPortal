@@ -14,6 +14,8 @@
             {% endif %}
 
             <div class="form-group">
+                <h2>Add an Announcement</h2>
+                <hr />
                 <label for="a_title">Announcement Title</label>
                 <input type="text"
                        class="form-control" name="a_title" id="a_title" aria-describedby="helpId" placeholder="Title">
@@ -31,6 +33,19 @@
         <button type="submit" class="btn btn-danger">Submit</button>
     </form>
     </div>
-
+    <hr />
+    <hr style="height:3px;border-width:0;color:red;background-color:red">
+    <div class="container align-center">
+    <h2>Add a Resource</h2>
+    <form method="POST">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="r_title">Resource </label>
+            <input type="text"
+                   class="form-control" name="r_title" id="r_title" aria-describedby="helpId" placeholder="Resource Title">
+            <small id="helpId" class="form-text text-muted">Max Char 200</small>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

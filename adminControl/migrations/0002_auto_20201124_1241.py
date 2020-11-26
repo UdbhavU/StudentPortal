@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('announcements', '0001_initial'),
+        ('adminControl', '0001_initial'),
     ]
 
     operations = [

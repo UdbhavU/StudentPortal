@@ -36,10 +36,10 @@
             {% if user == post.author%}
                 <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="float:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
             {% endif %}
-            <span>
+            </span>
         </div>
         <div class="card-body">        
-            <h6 class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></h6>
+            <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></div>
             <p class="card-text">{{post.post_content | safe}}</p>
             </div>
         <div class="card-footer">

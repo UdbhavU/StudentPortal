@@ -33,16 +33,17 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'Forum-Home' %}">Forum</a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'ANC' %}">Announcements</a>
-              </li>
+
                 <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                      <a class="dropdown-item" href="#">Subject1</a>
-                      <a class="dropdown-item" href="#">Subject2</a>
-                      <a class="dropdown-item" href="#">Subject5</a>
-                        <a class="dropdown-item" href="#">Subject4</a>
+                        {% for subject in subjects %}
+                            <a class="dropdown-item" href="{% url 'RESOURCE' id=subject.pk %}">{{ subject.subjectName }}</a>
+                        {% endfor %}
+
+{#                      <a class="dropdown-item" href="#">Subject2</a>#}
+{#                      <a class="dropdown-item" href="#">Subject5</a>#}
+{#                        <a class="dropdown-item" href="#">Subject4</a>#}
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -59,7 +60,9 @@
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {% if user.is_authenticated %}
            
-            
+              <li class="nav-item active">
+                  {% if user.is_superuser %}<a class="nav-link" href="{% url 'ANC' %}">Admin Control</a>{% endif %}
+              </li>
             <li class="navbar-item active text-danger"><a href="{% url 'Home'%}" class="nav-link">hello,{{user}}</a></li>
             <li class="navbar-item active text-danger"><a href="{% url 'userlogout'%}" class="nav-link">Logout</a></li>
                 
