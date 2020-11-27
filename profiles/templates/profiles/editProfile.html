@@ -1,0 +1,34 @@
+{% extends 'forum/base.html'%}
+{% block content %}
+    <div class = "container-fluid border m-5 p-5 ">
+    <h1 class="display1">Edit Bio</h1>
+    <form action = "" method = "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea class="form-control" name="bio" id="bio" rows="3">{{ profile.bio }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="course">Course</label>
+            <input type="text"
+                   class="form-control" name="course" id="course" aria-describedby="helpId" placeholder="Course" value="{{ profile.course }}">
+            <small id="helpId" class="form-text text-muted">Course enrolled in</small>
+        </div>
+        <div class="form-group">
+            <label for="picture">Profile Picture</label>
+            <input type="file" class="form-control-file" name="picture" id="picture" placeholder="upload profile picture" aria-describedby="fileHelpId">
+            <small id="fileHelpId" class="form-text text-muted">upload jpeg file</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% if error %}
+        <div class="m-2 alert alert-danger alert-dismissible fade show" role="alert">
+            {{error}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    </div>
+{% endblock content %}

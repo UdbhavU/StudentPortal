@@ -10,4 +10,7 @@ class Resource(models.Model):
     subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
     url = models.URLField(default=None)
     content = models.TextField()
+    class Meta:
+        ordering = ("subject",)
+
 

@@ -6,9 +6,9 @@ from django.db.models.deletion import CASCADE
 class Profiles(models.Model):
     
     user = models.ForeignKey(User, on_delete=CASCADE)
-    profilePicture = models.BinaryField(blank=True)
-    bio = models.TextField()
-    course = models.CharField(max_length=50)
+    profilePicture = models.ImageField(upload_to='images/',default=None)
+    bio = models.TextField(blank=True)
+    course = models.CharField(max_length=50,blank=True)
     class Meta:
         db_table = 'Profiles'
     def __str__(self)->str:

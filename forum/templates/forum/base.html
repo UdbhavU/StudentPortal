@@ -59,11 +59,15 @@
             </ul>
              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {% if user.is_authenticated %}
-           
+           {% if user.is_superuser %}
               <li class="nav-item active">
-                  {% if user.is_superuser %}<a class="nav-link" href="{% url 'ANC' %}">Admin Control</a>{% endif %}
+                  <a class="nav-link" href="{% url 'USER' %}">Users</a>
               </li>
-            <li class="navbar-item active text-danger"><a href="{% url 'Home'%}" class="nav-link">hello,{{user}}</a></li>
+                <li class="nav-item active">
+                 <a class="nav-link" href="{% url 'ANC' %}">Admin Control</a>
+              </li>
+               {% endif %}
+            <li class="navbar-item active text-danger"><a href="{% url 'Profile' id=user.pk %}" class="nav-link">hello,{{user}}</a></li>
             <li class="navbar-item active text-danger"><a href="{% url 'userlogout'%}" class="nav-link">Logout</a></li>
                 
             {% else%}
