@@ -1,13 +1,5 @@
 {% extends 'forum/base.html' %}
 {% block content %}
-    <div class="card">
-        <img class="card-img-top" src="{{ profile.profilePicture }}" alt="Profile Picture">
-        <div class="card-body">
-            <h4 class="card-title">{{ user }}</h4>
-            <p class="card-text">{{ profile.course}}</p>
-            <p class="card-text">{{ profile.bio }}</p>
-        </div>
-    </div>
     {% for post in posts %}
     <div class="card m-3">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
@@ -34,4 +26,4 @@
 
      </div>
     {% endfor %}
-{% endblock %}
+{% endblock content %}

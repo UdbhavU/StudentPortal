@@ -39,24 +39,16 @@
             </span>
         </div>
         <div class="card-body">        
-            <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></div>
+            <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <a href="{% url 'Author-Post' id=post.author.pk %}"><em style='color:blue'> {{post.author}}</em></a> on {{post.created}}</p></div>
             <p class="card-text">{{post.post_content | safe}}</p>
             </div>
         <div class="card-footer">
-        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>        
-                <i onclick="clickLoved(this)" class="fa fa-heart-o"></i>
-                <a href='#'><i style="float:right;" class="fa fa-comments"></i></a>
+        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>
+
 
         </div>
         
      </div>
-     
-     <script>
-
-   function clickLoved(x) {
-  x.classList.toggle("fa-heartbeat");
-}
-     </script>
 {% endfor %}
 {% endblock content %}
 

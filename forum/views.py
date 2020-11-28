@@ -35,8 +35,6 @@ def home(request):
 def forum(request):
     posts = Posts.objects.all()
     context['posts']= posts
-
-    print(context)
     return render(request, 'forum/forum.html', context)
 
 
@@ -64,7 +62,11 @@ def viewPost(request, id):
         createComment(request, post_id=id, post_comment=request.POST.get("comment"))
     return render(request, 'forum/viewpost.html', context)
 
-
+##-----------------author-post----------------------##
+@user_authenticated
+def authorPost(request,id):
+    post = Posts.objects.filter(author=id)
+    return render(request, 'forum/authorPost.html', context)
 ##-----------------edit post------------------------##
 def editPost(request, id):
     edited = False
