@@ -3,7 +3,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 's2i6#&ho4xtx2h(=62v)*orkz-avayn)$qzlo)@qc4dq9_9kd9'
 DEBUG = False
-ALLOWED_HOSTS = [ "0.0.0.1","192.168.1.3","127.0.0.1"]
+ALLOWED_HOSTS = ["0.0.0.1","192.168.1.3","127.0.0.1"]
 INSTALLED_APPS = [
     'resources.apps.ResourcesConfig',
     'profiles.apps.ProfilesConfig',
@@ -84,8 +84,10 @@ USE_L10N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "root")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, "static"),
 ]
+
 MEDIA_URL="/media/"
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')

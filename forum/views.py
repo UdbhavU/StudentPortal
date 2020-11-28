@@ -66,6 +66,7 @@ def viewPost(request, id):
 @user_authenticated
 def authorPost(request,id):
     post = Posts.objects.filter(author=id)
+    context["posts"]= post
     return render(request, 'forum/authorPost.html', context)
 ##-----------------edit post------------------------##
 def editPost(request, id):

@@ -9,6 +9,12 @@
             </span>
             <span style="float:right;">
             {% comment %} <span style="float:right;"> {% endcomment %}
+            {% if user.is_superuser %}
+                <a href="{% url 'Delete-Post' id=post.pk %}" ><span style="float:left;"><button type="button" class="btn btn-danger">Delete</button></span></a>
+            {% endif %}
+            </span>
+            <span style="float:right;">
+            {% comment %} <span style="float:right;"> {% endcomment %}
             {% if user == post.author%}
                 <a href="{% url 'Edit-Post' id=post.pk %}" ><span style="float:left;"><button type="button" class="btn btn-outline-success">Edit</button></span></a>
             {% endif %}
