@@ -5,6 +5,7 @@ SECRET_KEY = 's2i6#&ho4xtx2h(=62v)*orkz-avayn)$qzlo)@qc4dq9_9kd9'
 DEBUG = True
 ALLOWED_HOSTS = ["0.0.0.1","192.168.1.3","127.0.0.1"]
 INSTALLED_APPS = [
+    'timetable.apps.TimetableConfig',
     'resources.apps.ResourcesConfig',
     'profiles.apps.ProfilesConfig',
     'adminControl.apps.AdminControlConfig',
