@@ -10,10 +10,9 @@ urlpatterns = [
                   path('', include('forum.urls')),
                   path('', include('registration.urls')),
                   path('', include('userlogin.urls')),
-
                   path('', include('adminControl.urls')),
                   path('', include('resources.urls')),
-
                   path('', include('profiles.urls')),
+                  path('', include('timetable.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
