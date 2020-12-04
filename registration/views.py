@@ -3,6 +3,12 @@ from django.contrib.auth.models import User, auth
 #[fixed]#TODO: fix the email bug.
 #Django gets element by name
 # Create your views here.
+from resources.models import Subject
+from timetable.models import Cls
+
+context={}
+context["classes"] = Cls.objects.all()
+context["subjects"] = Subject.objects.all()
 def signup(request):
     error=[]
     if request.method == 'POST':
@@ -34,6 +40,8 @@ def signup(request):
             return render(request, 'registration/signupform.html', {'title': 'SignUp', 'error': error})
 
     else:
-              
-        return render(request,'registration/signupform.html',{'title':'SignUp','error':error})
+        {'title': 'SignUp', 'error': error}
+        context['title'] = 'SignUp'
+        context["error"] = error
+        return render(request,'registration/signupform.html',context)
 

@@ -50,11 +50,10 @@
                 <li class="nav-item active dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TimeTables</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Class1</a>
-                    <a class="dropdown-item" href="#">Class2</a>
-                    <a class="dropdown-item" href="#">Class3</a>
-                      <a class="dropdown-item" href="#">Class4</a>
-                      <a class="dropdown-item" href="#">Exams</a>
+                      {% for i in classes %}
+                    <a class="dropdown-item" href="{% url 'Time-Table' id=i.cls %}">{{ i.cls }}</a>
+                      {% endfor %}
+
                   </div>
               </li>
             </ul>
