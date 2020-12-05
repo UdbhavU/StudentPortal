@@ -6,7 +6,7 @@
 <!-- Required meta tags to make it mobile responsive-->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <link rel="stylesheet" href="{% static '/css/card.css' %}">
+   <link rel="stylesheet" href="{{STATIC_URL}}/css/card.min.css">
 
 <!-- Bootstrap CSS CDN-->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -24,7 +24,8 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-{% if user.is_superuser %}{{ "danger" }}{% else %}{{ "primary" }}{% endif %}">
         <a class="navbar-brand" href="{% url 'Home' %}">Student Portal</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation"></button>
+            aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+        class="fa fa-bars fa-1x"></i></span></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
@@ -49,11 +50,10 @@
                 <li class="nav-item active dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TimeTables</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">Class1</a>
-                    <a class="dropdown-item" href="#">Class2</a>
-                    <a class="dropdown-item" href="#">Class3</a>
-                      <a class="dropdown-item" href="#">Class4</a>
-                      <a class="dropdown-item" href="#">Exams</a>
+                      {% for i in classes %}
+                    <a class="dropdown-item" href="{% url 'Time-Table' id=i.cls %}">{{ i.cls }}</a>
+                      {% endfor %}
+
                   </div>
               </li>
             </ul>
@@ -79,9 +79,23 @@
         </div>
     </nav>
     <main>
+            <div class="container-fluid col-sm-8 justify-left">
+        {% block content-left %}
+
+         {% endblock %}
+
+
+    </div>
     <div class="container-fluid col-sm-8 justify-center">
         {% block content %}
         
+         {% endblock %}
+
+
+    </div>
+        <div class="container-fluid col-sm-8 justify-right">
+        {% block content-right %}
+
          {% endblock %}
 
 

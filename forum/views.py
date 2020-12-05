@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from adminControl.models import Announcement
+from timetable.models import Cls
 from .decorator import user_authenticated
 ##--------------models---------------##
 from .models import Posts
@@ -11,10 +12,9 @@ from django.contrib.auth.models import User
 
 ##-----------------------------------##
 context = {}
-
-subjects = Subject.objects.all()
-
-context["subjects"] = subjects
+context['title']="Forum"
+context["classes"] = Cls.objects.all()
+context["subjects"] = Subject.objects.all()
 # following are list just dummy contents
 # when accessing from databse make sure that the content is a list
 ##done: Access the database content and replace posts with the content from the database
@@ -66,6 +66,7 @@ def viewPost(request, id):
 @user_authenticated
 def authorPost(request,id):
     post = Posts.objects.filter(author=id)
+    context["posts"]= post
     return render(request, 'forum/authorPost.html', context)
 ##-----------------edit post------------------------##
 def editPost(request, id):

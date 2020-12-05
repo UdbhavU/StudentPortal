@@ -5,9 +5,11 @@ from django.shortcuts import render, redirect, Http404
 from .models import Announcement
 from resources.models import Subject , Resource
 from django.contrib.auth.models import User
+from timetable.models import Cls
 context: Dict[Any, Any] = {}
 context["subjects"] = Subject.objects.all()
-# Create your views here.
+context["classes"] = Cls.objects.all()
+context["title"]="Admin"
 def announcement(request):
     if request.user.is_superuser:
         if request.method == "POST":

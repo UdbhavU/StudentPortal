@@ -2,9 +2,10 @@ from pathlib import Path
 import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 's2i6#&ho4xtx2h(=62v)*orkz-avayn)$qzlo)@qc4dq9_9kd9'
-DEBUG = False
-ALLOWED_HOSTS = [ "0.0.0.1","192.168.1.3","127.0.0.1"]
+DEBUG = True
+ALLOWED_HOSTS = ["0.0.0.1","192.168.1.3","127.0.0.1"]
 INSTALLED_APPS = [
+    'timetable.apps.TimetableConfig',
     'resources.apps.ResourcesConfig',
     'profiles.apps.ProfilesConfig',
     'adminControl.apps.AdminControlConfig',
@@ -27,6 +28,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.contrib.messages.context_processors.messages")
+
 ROOT_URLCONF = 'StudentPortal.urls'
 TEMPLATES = [
     {
@@ -83,9 +92,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
+STATIC_URL = '/root/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "root")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, "static"),
 ]
+
 MEDIA_URL="/media/"
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')

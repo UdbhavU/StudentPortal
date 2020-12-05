@@ -1,0 +1,40 @@
+{% extends "forum/base.html" %}
+{%  block content %}
+<form method="POST">
+{% csrf_token %}
+
+    <table class="table">
+    <tr><thead>
+        <TH>*</TH>
+
+        {%  for i in range %}
+            <th>{{ i }}</th>
+
+       {%  endfor %} </thead></tr>
+        <tbody>
+        {% for day,l in timetable %}
+
+            <tr>
+            <td scope="row">{{ l }}</td>
+            {% for sub,i in day %}
+
+                <td>
+                    <div class="form-group">
+                        <select class="form-control" name="slot{{ l }}{{ i }}" id="slot{{ l }}{{ i }}">
+                        <option>{{ sub.subjectName }}</option>
+                            {% for subject in subjects %}<option>{{ subject.subjectName }}</option>{%  endfor %}
+                        </select>
+                    </div>
+                </td>
+            {%  endfor %}
+        </tr>
+
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

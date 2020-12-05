@@ -1,0 +1,36 @@
+{%  extends "forum/base.html" %}
+{%  block content %}
+    <h2>{{ cls }}'s Timetable </h2>
+
+    <table class="table">
+    <tr><thead>
+        <TH>*</TH>
+
+        {%  for i in range %}
+            <th>{{ i }}</th>
+
+       {%  endfor %} </thead></tr>
+        <tbody>
+        {% for day,l in timetable %}
+
+            <tr>
+            <td scope="row">{{ l }}</td>
+            {% for sub,i in day %}
+
+                <td>
+
+
+                        {{ sub.subjectName }}
+
+
+                </td>
+            {%  endfor %}
+        </tr>
+
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+{%  endblock %}
