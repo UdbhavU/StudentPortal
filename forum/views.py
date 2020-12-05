@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 
 ##-----------------------------------##
 context = {}
+context['title']="Forum"
 context["classes"] = Cls.objects.all()
 context["subjects"] = Subject.objects.all()
 # following are list just dummy contents

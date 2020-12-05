@@ -1,10 +1,15 @@
+from resources.models import Subject
+from timetable.models import Cls
 from userlogin.decorator import login_authenticated
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout
 from . import decorator
 
-
+context={}
+context["subjects"] = Subject.objects.all()
+context["classes"] = Cls.objects.all()
+context["title"]="Login"
 # Create your views here.
 @login_authenticated
 def userlogin(request):
@@ -24,13 +29,17 @@ def userlogin(request):
             print(request.user,'0000')
             return redirect('Forum-Home')
         else:
-             context = {
-            'error':'Invalid Username or Password '
-        }
+             context['error'] = 'Invalid Username or Password'
+        #                                                      '{
+        #     'error':',
+        #         'title':'Login',
+        #          'subjects':Subject.objects.all(),
+        #          'classes':Cls.objects.all(),
+        # }
         return render(request,'userlogin/signin.html',context)
             
     else:
-       return render(request,'userlogin/signin.html')
+       return render(request,'userlogin/signin.html',context)
 
 
 def userlogout(request):

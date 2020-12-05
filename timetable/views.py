@@ -15,10 +15,14 @@ def timetable(request,id):
     print("ioioioio")
     cls = Cls.objects.get(cls=id)
     k = 0
+    if len(Day.objects.filter(cls=cls)) <= 0:
+        return redirect('C-Time-Table', id=id)
+
     for i in day_list:
 
         day_subs = []
         for j in range(1,9):
+
 
             slot = TimeSlot.objects.get(day=Day.objects.get(cls = cls,day_name = i),time = j)
             day_subs.append(Subject.objects.get(pk=slot.subject.pk))
@@ -33,13 +37,12 @@ def timetable(request,id):
 @is_superuser
 def createTimeTable(request,id):
     print("######")
-    cls = Cls.objects.filter(cls = id)
+    cls = Cls.objects.get(cls = id)
     print("######")
-    if not (cls.exists()):
-        print("######")
-        print('shit exists')
+    if not (cls):
         cls = Cls.objects.create(cls = id)
         cls.save()
+
     print("######")
     # if Day.objects.filter(cls = cls).exists():
     #     return redirect('Home')

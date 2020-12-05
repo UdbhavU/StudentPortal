@@ -79,9 +79,23 @@
         </div>
     </nav>
     <main>
+            <div class="container-fluid col-sm-8 justify-left">
+        {% block content-left %}
+
+         {% endblock %}
+
+
+    </div>
     <div class="container-fluid col-sm-8 justify-center">
         {% block content %}
         
+         {% endblock %}
+
+
+    </div>
+        <div class="container-fluid col-sm-8 justify-right">
+        {% block content-right %}
+
          {% endblock %}
 
 

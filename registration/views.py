@@ -7,6 +7,7 @@ from resources.models import Subject
 from timetable.models import Cls
 
 context={}
+context['title'] = 'SignUp'
 context["classes"] = Cls.objects.all()
 context["subjects"] = Subject.objects.all()
 def signup(request):
@@ -33,15 +34,17 @@ def signup(request):
             else:
                 
                 print('*')
-                return render(request, 'registration/signupform.html', {'title': 'SignUp', 'error': error})
+                context["error"] = error
+                return render(request, 'registration/signupform.html', context)
         else:
             error.append('Different Passwords entered')
             print('*')
-            return render(request, 'registration/signupform.html', {'title': 'SignUp', 'error': error})
+            context["error"] = error
+            return render(request, 'registration/signupform.html', context)
 
     else:
-        {'title': 'SignUp', 'error': error}
-        context['title'] = 'SignUp'
+        # {'title': 'SignUp', 'error': error}
+
         context["error"] = error
         return render(request,'registration/signupform.html',context)
 
