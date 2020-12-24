@@ -15,15 +15,16 @@
 
         {% for announcement in ancmts %}
             <div class="list-group">
-        <div class="list-group-item list-group-item-action list-group-item-warning active"><span>{{ announcement.title }} <span>
+        <div class="list-group-item list-group-item-action list-group-item-warning active" style="font-weight: bold;"><span>{{ announcement.title }}<span><br />
             {% for tag in announcement.tag %}
-                {{ tag }}
+            <span class="badge badge-pill badge-primary">{{ tag }}</span>
+                
 
             {% endfor %}
         </span>
             {% if user == announcement.author %}
                 </span><span style="float:right;">
-            <a href="{% url 'E-ANC' id=announcement.pk %}"><span class="badge badge-pill badge-primary">Edit</span></a></span>
+            <a href="{% url 'E-ANC' id=announcement.pk %}"><span class="badge badge-pill badge-danger">Edit</span></a></span>
             {% endif %}
         <div><small>Announced on {{ announcement.publish }}</small></div>
         </div>

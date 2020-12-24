@@ -37,11 +37,12 @@ def timetable(request,id):
 @is_superuser
 def createTimeTable(request,id):
     print("######")
-    cls = Cls.objects.get(cls = id)
-    print("######")
-    if not (cls):
+    if len(Cls.objects.filter(cls=id))<=0:
         cls = Cls.objects.create(cls = id)
         cls.save()
+    cls = Cls.objects.get(cls = id)
+    print("######")
+
 
     print("######")
     # if Day.objects.filter(cls = cls).exists():
