@@ -43,7 +43,7 @@
             <p class="card-text">{{post.post_content | safe}}</p>
             </div>
         <div class="card-footer">
-        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a>
+        <a href="{% url 'View-Post' id=post.pk %}" class="card-link">Read more</a><small><span style="float:right;">{{post.no_of_comments}} comments on this post</span></small>
 
 
         </div>
