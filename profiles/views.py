@@ -5,8 +5,12 @@ from django.contrib.auth.models import User
 from forum.decorator import user_authenticated
 from .models import Profiles
 from forum.models import Posts
+from timetable.models import Cls,Subject
 
-context ={}
+context = {}
+context['title'] = "Profile"
+context["classes"] = Cls.objects.all()
+context["subjects"] = Subject.objects.all()
 # Create your views here.
 def viewProfile(request, id):
     if request.user == User.objects.get(pk=id) and not Profiles.objects.filter(user=request.user).exists():
