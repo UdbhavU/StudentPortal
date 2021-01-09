@@ -1,5 +1,6 @@
 {% extends 'forum/base.html' %}
 {% block content %}
+<div class="bgc-light">
     <hr />
     <hr style="height:3px;border-width:0;color:red;background-color:red">
 
@@ -14,7 +15,7 @@
             {% endif %}
 
             <div class="form-group">
-                <h2>Add an Announcement</h2>
+                <h2 >Add an Announcement</h2>
                 <hr />
                 <label for="a_title">Announcement Title</label>
                 <input type="text"
@@ -83,5 +84,5 @@
     <!-- <a name="editTimetable" id="editTimetable" class="btn btn-danger" href="{%url 'E-Time-Table' '1'%}" role="button">EditTimetable</a> -->
     
 </div>
-
+</div>
 {% endblock %}

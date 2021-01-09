@@ -1,9 +1,9 @@
 {% extends 'forum/base.html' %}
 {% block content %}
- <h3>Edit Post</h3>
+ <h3 class="text-white">Edit Post</h3>
  <form method ='POST'>
      {% csrf_token %}
-     <div class="form-group">
+     <div class="bgc-light form-group">
        <label for="a_title">Title</label>
        <input type="text" class="form-control" name="a_title" id="a_title" value="{{ancmt.title}}"/>
          <div class="form-group">

@@ -1,10 +1,10 @@
 {% extends 'forum/base.html' %}
 {% block content %}
 
-<h1 class = 'display1'>Signup</h1>
-<div class="container-fluid justify-center ">
+<h1 class = 'display1 text-white text-center m-5'>Signup</h1>
+<div class=" bgc-white container-fluid justify-center text-white m-5 p-5">
 
-    <form action ="" method = 'POST'>
+    <form action ="" method = 'POST' id="signupForm">
     {% if error %}
     {% for e in error  %}
     <div class="alert alert-danger" role="alert">
@@ -43,9 +43,12 @@
           <label for="password2">Re-enter password</label>
           <input type="password" class="form-control" name="password2" id="password2" placeholder="***********">
         </div>  
-       <button type="submit" class="btn btn-primary">Submit</button>
+       <button type="submit" class="btn btn-primary">Submit</button><span style="float:right;"class="text-primary"><input type="reset" class="btn btn-primary" value="Clear"></span>
 
     </div>
     </form>
 </div>
+<script>
+
+</script>
 {% endblock content %}

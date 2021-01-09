@@ -1,9 +1,9 @@
 {% extends 'forum/base.html' %}
 {% block content %}
     <br />
-    <h2>Users Registered</h2>
+    <h2 class="text-white">Users Registered</h2>
     <br />
-    <div class="container-fluid align-center justify-content-center">
+    <div class=" bgc-light container-fluid align-center justify-content-center">
         <table class="table">
             <thead>
             <tr>
@@ -13,13 +13,19 @@
             </tr>
             </thead>
             <tbody>
-            {% for item in userList %}
+            {% for item in userList %}{% if  item.id != user.id %}
                 <tr>
                 <td scope="row">{{ item.id }}</td>
                 <td>{{ item.username }}</td>
-                <td><span><a class="btn btn-primary" href="{% url 'Author-Post' id=item.id %}" role="button button-primary">Posts</a></span></td>
+                <td><span><a class="btn btn-primary" href="{% url 'Author-Post' id=item.id %}" role="button button-primary">Posts</a></span>
+                    {% if not item.is_superuser%}
+                    <a class="btn btn-primary" href="{% url 'Make-Admin' id=item.id %}" role="button button-primary">Make an Admin</a></span></td>
+                    {% else %}
+                    <a class="btn btn-danger" href="{% url 'Remove-Admin' id=item.id %}" role="button button-primary">Remove as Admin</a></span>
+                    {% endif %}
 
             </tr>
+            {% endif %}
             {% endfor %}
             </tbody>
         </table>

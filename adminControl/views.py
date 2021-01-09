@@ -1,5 +1,5 @@
 from typing import Dict, Any
-
+from .decorators import is_superuser
 
 from django.shortcuts import render, redirect, Http404
 from .models import Announcement
@@ -28,7 +28,7 @@ def announcement(request):
 
     return render(request, 'adminControl/adminControlPage.html', context)
 
-
+@is_superuser
 def editAnnouncement(request, id):
     if request.method == "POST":
         announcement = Announcement.objects.get(pk=id)
@@ -42,7 +42,7 @@ def editAnnouncement(request, id):
         context["ancmt"] = ancmt
         return render(request, 'adminControl/editAnnouncement.html', context)
 
-
+@is_superuser
 def createResource(request):
     if request.method == "POST":
         subject = Subject.objects.get(subjectCode=request.POST.get("r_sub"))
@@ -55,6 +55,7 @@ def createResource(request):
     return redirect('Home')
 
 
+@is_superuser
 def userList(request):
     if request.user.is_superuser:
         # context["userList"] = User.objects.all()
@@ -62,3 +63,16 @@ def userList(request):
         return render(request, 'adminControl/users.html', context)
     else:
         raise Http404("You are not authorized to access this page")
+
+@is_superuser
+def makeAdmin(request, id):
+    user = User.objects.get(id=id)
+    user.is_superuser = True
+    user.save()
+    return redirect('USER')
+@is_superuser
+def removeAdmin(request,id):
+    user = User.objects.get(id=id)
+    user.is_superuser = False
+    user.save()
+    return redirect('USER')
