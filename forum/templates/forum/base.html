@@ -1,13 +1,14 @@
-{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Required meta tags to make it mobile responsive-->
-   <meta charset="utf-8">
+    <!-- Required meta tags to make it mobile responsive-->
+    {% load static%}
+    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <link rel="stylesheet" href="{{STATIC_URL}}/css/card.min.css">
 
+
+   <link rel="stylesheet" href="{% static "/css/style.css"%}">
 <!-- Bootstrap CSS CDN-->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -19,10 +20,10 @@
     <title>Student Portal</title>
 {% endif %}
 </head>
-<body>
+<body class="home">
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-{% if user.is_superuser %}{{ "danger" }}{% else %}{{ "primary" }}{% endif %}">
-        <a class="navbar-brand" href="{% url 'Home' %}">Student Portal</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bgc-{% if user.is_superuser %}{{ "danger" }}{% else %}{{ "primary" }}{% endif %}">
+        <a class="op navbar-brand" href="{% url 'Home' %}">Student Portal</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
         class="fa fa-bars fa-1x"></i></span></button>
@@ -69,11 +70,11 @@
                {% endif %}
             <li class="navbar-item active text-danger"><a href="{% url 'Profile' id=user.pk %}" class="nav-link">hello,{{user}}</a></li>
             <li class="navbar-item active text-danger"><a href="{% url 'userlogout'%}" class="nav-link">Logout</a></li>
-                
+
             {% else%}
                 <li class="navbar-item active text-danger"><a href="{% url 'userlogin'%}" class="nav-link">login</a></li>
                 <li class="navbar-item active text-danger"><a href="{% url 'signup'%}" class="nav-link">Sign Up</a></li>
-                
+
               </ul>
               {% endif %}
         </div>
@@ -88,7 +89,7 @@
     </div>
     <div class="container-fluid col-sm-8 justify-center">
         {% block content %}
-        
+
          {% endblock %}
 
 

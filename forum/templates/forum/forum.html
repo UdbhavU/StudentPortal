@@ -1,12 +1,12 @@
 {% extends 'forum/base.html' %}
 {% block content %}
-<h2 class='display-4'>Posts</h2>
-<div class="card">  
-    <div class="card-header">
+<h2 class='display-4 text-white'>Posts</h2>
+<div class="card-trans card " style="background-color: rgba(245, 245, 245, 0.8);" >
+    <div class="card-trans card-header ">
         <h5 class="card-title">Create a post</h5>
         <h6 class="card-subtitle mb-2 text-muted">Posting as {{user}}</h6>
     </div>
-    <div class="card-body">      
+    <div class="card-body card-trans">
         <form method="POST" action="{% url 'Create-Post'%}">
             {% csrf_token %}
             <div class="form-group">
@@ -25,9 +25,9 @@
 </div>
 
     {% for post in posts %}
-    <div class="card m-3">
+    <div class="card m-3" style="background-color: rgba(245, 245, 245, 0.8);" >
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
-        <div class="card-header bg-light">
+        <div class="card-header bgc-white">
             <span>
             {{post.post_title}}
             </span>
