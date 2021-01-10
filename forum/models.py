@@ -11,6 +11,7 @@ class Posts(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    edited = models.BooleanField(default=False)
     no_of_comments = models.IntegerField(default=0)
     class Meta:
         ordering = ('-publish',)

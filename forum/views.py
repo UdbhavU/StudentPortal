@@ -86,6 +86,7 @@ def editPost(request, id):
                 edited = True
                 print('2')
             if edited:
+                post.edited = True
                 post.save()
             return redirect('Forum-Home')
 

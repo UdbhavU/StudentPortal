@@ -39,7 +39,7 @@
             </span>
         </div>
         <div class="card-body">        
-            <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <a href="{% url 'Author-Post' id=post.author.pk %}"><em style='color:blue'> {{post.author}}</em></a> on {{post.created}}</p></div>
+            <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <a href="{% url 'Author-Post' id=post.author.pk %}"><em style='color:blue'> {{post.author}}</em></a> on {{post.created}}</p>{% if post.edited %}<span class="badge badge-primary fl">Edited</span>{% endif %}</div>
             <p class="card-text">{{post.post_content | safe}}</p>
             </div>
         <div class="card-footer">
