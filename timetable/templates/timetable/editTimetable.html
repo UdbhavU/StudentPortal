@@ -1,5 +1,7 @@
 {% extends "forum/base.html" %}
 {%  block content %}
+<div class="m-5 p-5 bgc-light">
+    <h2>{{ cls }}'s Timetable </h2>
 <form method="POST">
 {% csrf_token %}
 
@@ -37,4 +39,5 @@
     </table>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 {% endblock %}

@@ -5,6 +5,10 @@
     opacity: 0.5
 }
 .home {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    background-position: center center;
         background-image: url('../images/background2.jpg');
 
 }
@@ -31,4 +35,7 @@ font-weight: bold;
 }
 .card-trans{
     background: rgba(255,255,255,0.8);
+}
+.fl{
+    float:right;
 }

@@ -36,6 +36,29 @@
     </div>
     <hr />
     <hr style="height:3px;border-width:0;color:red;background-color:red">
+    <div class="container align-center"><form method="POST" action="{% url 'C-Subject'%}">
+        
+        {% csrf_token %}
+        <div class="form-group">
+          <h2 for="className">Add a Subject</h2>
+          <label for="subjectName">Subject Name</label>
+          <input type="text"
+            class="form-control" name="subjectName" id="subjectName" aria-describedby="helpId" placeholder="Subject Name">
+            <br />
+        </div>
+            <div class="form-group">
+              <label for="subjectCode">Subject Code</label>
+              <input type="text"
+                class="form-control" name="subjectCode" id="subjectCode"  placeholder="Subject Code">
+              
+            <br />
+          <button type="submit" class="btn btn-danger">Add Subject</button>
+        </div>
+    </form>
+</div>
+    <hr />
+    <hr style="height:3px;border-width:0;color:red;background-color:red">
+
     <div class="container align-center">
     <h2>Add a Resource</h2>
     <form action="{% url 'C-RESOURCE' %}" method="POST">
@@ -69,20 +92,36 @@
 </div>
 <hr />
 <hr style="height:3px;border-width:0;color:red;background-color:red">
+<div class="container align-center">
 <h1>Time Table</h1>
-<div style="display:flex; flex-direction:row">
-    <div class="dropdown">
-  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Edit TimeTable
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
- {% for i in classes %}
+    <div style="display:flex; flex-direction:row">
+        <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Edit TimeTable
+    </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for i in classes %}
                     <a class="dropdown-item" href="{% url 'E-Time-Table' id=i.cls %}">{{ i.cls }}</a>
-            {% endfor %}
-  </div>
-</div>
+        {% endfor %}
+        </div>
+        </div>
+
     <!-- <a name="editTimetable" id="editTimetable" class="btn btn-danger" href="{%url 'E-Time-Table' '1'%}" role="button">EditTimetable</a> -->
     
+    </div>
+    <hr />
+    <form method="POST" action="{% url 'C-Time-Table' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="className">Class Name</label>
+          <input type="text"
+            class="form-control" name="className" id="className" aria-describedby="helpId" placeholder="Class Name">
+            <br />
+          <button type="submit" onClick="timeTable()" class="btn btn-danger">Create TimeTable</button>
+        </div>
+    </form>
 </div>
-</div>
+<hr />
+<hr style="height:3px;border-width:0;color:red;background-color:red">
+
 {% endblock %}

@@ -30,7 +30,7 @@ def signup(request):
                 user = User.objects.create_user(first_name=fname, last_name=lname, username = uname, password = password1, email = uemail)
                 user.save()
                 print('*')
-                return redirect('/')
+                return redirect('userlogin')
             else:
                 
                 print('*')

@@ -1,9 +1,9 @@
 {% extends 'forum/base.html' %}
 {% block content %}
     {% for post in posts %}
-    <div class="card m-3">
+    <div class="p-0 bgc-light card  m-3">
     <!--tips: add .text-center,.text-right to the .card to change card text alignment-->
-        <div class="card-header bg-light">
+        <div class="bgc-light card-header ">
             <span>
             {{post.post_title}}
             </span>
@@ -20,7 +20,7 @@
             {% endif %}
             </span>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-light">
             <div class="card-subtitle mb-2 text-muted"><p style='font-size:10px'>Posted by <em style='color:blue'> {{post.author}}</em> on {{post.created}}</p></div>
             <p class="card-text">{{post.post_content | safe}}</p>
             </div>

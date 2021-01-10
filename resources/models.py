@@ -4,6 +4,8 @@ from django.db import models
 class Subject(models.Model):
     subjectName = models.CharField(max_length=100)
     subjectCode = models.CharField(max_length=20)
+    class Meta:
+        ordering = ("subjectCode",)
 
 class Resource(models.Model):
     resourceTitle = models.CharField(max_length=100)

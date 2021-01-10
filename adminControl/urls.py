@@ -8,5 +8,7 @@ urlpatterns =[
     path('userList/', views.userList, name = 'USER' ),
     path('makeAdmin/<int:id>',views.makeAdmin, name="Make-Admin"),
     path('removeAdmin/<int:id>',views.removeAdmin, name="Remove-Admin"),
+    path('createTimeTable',views.cTimeTable,name='C-Time-Table'),
+    path('addSubject',views.addSubject,name='C-Subject'),
 
 ]

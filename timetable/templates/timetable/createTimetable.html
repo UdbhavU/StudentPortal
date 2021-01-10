@@ -1,6 +1,7 @@
 {% extends "forum/base.html" %}
 {%  block content %}
 <form method="POST">
+    <div class="m-5 p-5 bgc-light">
 {% csrf_token %}
 
     <table class="table">
@@ -35,4 +36,5 @@
     </table>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 {% endblock %}

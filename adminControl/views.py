@@ -54,6 +54,24 @@ def createResource(request):
         resource.save()
     return redirect('Home')
 
+@is_superuser
+def addSubject(request):
+        if request.method=="POST":
+            sName = request.POST['subjectName']
+            sCode = request.POST['subjectCode']
+            if Subject.objects.filter(subjectCode=sCode).exists():
+                return redirect('ANC')
+            else:
+                newSubject = Subject.objects.create()
+                newSubject.subjectName = sName
+                newSubject.subjectCode=sCode
+                newSubject.save()
+                return redirect('ANC')
+        
+        else:
+            return redirect('ANC')
+
+
 
 @is_superuser
 def userList(request):
@@ -76,3 +94,10 @@ def removeAdmin(request,id):
     user.is_superuser = False
     user.save()
     return redirect('USER')
+@is_superuser
+def cTimeTable(request):
+    if request.method=="POST":
+        className = request.POST['className']
+        return redirect('C-Time-Table',id=className)
+    else:
+        return redirect('ANC')
