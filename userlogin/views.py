@@ -13,8 +13,7 @@ context["title"]="Login"
 # Create your views here.
 @login_authenticated
 def userlogin(request):
-    if request.method == 'POST':
-        
+    if request.method == 'POST':        
         username = request.POST.get('username')
         password = request.POST.get('password')
         print(username,password)

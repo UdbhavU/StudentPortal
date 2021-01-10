@@ -52,7 +52,7 @@ def createResource(request):
         resource = Resource.objects.create(
             resourceTitle=r_title, url=r_url, content=r_content, subject=subject)
         resource.save()
-    return redirect('Home')
+    return redirect('ANC')
 
 @is_superuser
 def addSubject(request):
@@ -60,6 +60,7 @@ def addSubject(request):
             sName = request.POST['subjectName']
             sCode = request.POST['subjectCode']
             if Subject.objects.filter(subjectCode=sCode).exists():
+                print('----')
                 return redirect('ANC')
             else:
                 newSubject = Subject.objects.create()
